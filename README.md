@@ -10,6 +10,7 @@ I can use C++ a little.
 
 ## Directory
 
-build
-hello
-work
+cpper/<br>
+├── build/  ... make build samples  <br>
+├── hello/  ... hollo world samples <br>
+└── work/   ... playground<br>
