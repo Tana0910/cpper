@@ -3,6 +3,7 @@
 
 int main()
 {
+    // 試したいコードを気軽に書いていく
     std::cout << "Hello\n";
     return 0;
 }
