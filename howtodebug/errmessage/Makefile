@@ -1,0 +1,38 @@
+# ビルドシステム GNU Make を用いると、
+# プログラムのコンパイルを自動的に行うことができる
+# Makefile と呼ばれるテキストファイルの中に、
+# ターゲット、事前要件、レシピという3つの概念で
+# 依存関係をルールとして記述する
+
+# コンパイルオプションを変数として定義する
+# 定義の仕方は
+# 変数名 = 変数の内容
+# ただし、変数を使うときは
+# $(変数名)
+# のように　$() で変数名を包む必要がある
+gcc_options = -std=c++17 -Wall --pedantic-error
+
+# 依存関係をルールとして記述する
+# ターゲット : 事前要件
+# 	レシピ
+# 注) レシピの直前には必ずタブ文字を書かなければならない
+
+# 自動変数 
+# $@   ルールのターゲットのファイル名
+# $<   ルールの最初の事前要件のファイル名
+
+# ここでは $< は main.cpp, $@ は program
+program : main.cpp all.h all.h.gch
+	g++ $(gcc_options) -include all.h $< -o $@
+
+all.h.gch : all.h
+	g++ $(gcc_options) -x c++-header -o $@ $<
+
+run : program
+	./program
+
+clean : program
+	rm -f ./program
+	rm -f ./all.h.gch
+
+.PHONY : run clean
