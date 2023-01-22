@@ -21,16 +21,27 @@ int main()
     std::cin >> str;
     std::vector<std::string> res;
     std::replace(str.begin(), str.end(), ',', ' ');
-    std::stringstream buf(str);
-    while (!buf.eof())
+    // auto itr = str.begin();
+    size_t idx = 0;
+    while (idx < str.size())
     {
-        std::string s;
-        buf >> s;
-        res.push_back(s);
+        while (str[idx] == ' ') ++idx;
+        size_t nextidx = str.find_first_of(' ', idx);
+        if (nextidx == str.npos) res.push_back(str.substr(idx, str.size() - idx + 1));
+        else res.push_back(str.substr(idx, nextidx - idx));
+        idx = nextidx;
     }
-    for (auto& str : res)
+    // std::stringstream buf(str);
+    // while (!buf.eof())
+    // {
+    //     std::string s;
+    //     buf >> s;
+    //     res.push_back(s);
+    // }
+    std::cout << res.size() << std::endl;
+    for (auto& s : res)
     {
-        std::cout << str << std::endl;
+        std::cout << s << '\n';
     }
     return 0;
 }
