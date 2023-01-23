@@ -25,10 +25,27 @@ int main()
     size_t idx = 0;
     while (idx < str.size())
     {
-        while (str[idx] == ' ') ++idx;
-        size_t nextidx = str.find_first_of(' ', idx);
-        if (nextidx == str.npos) res.push_back(str.substr(idx, str.size() - idx + 1));
-        else res.push_back(str.substr(idx, nextidx - idx));
+        while (str[idx] == ' ')
+        {
+            ++idx;
+            if (idx >= str.size())
+                break;
+        }
+        size_t nextidx = str.find(" ", idx);
+        if (nextidx == str.npos)
+        {
+            std::string sub = str.substr(idx, str.size() - idx + 1);
+            std::cout << "last idx=" << idx << std::endl;
+            std::cout << sub << std::endl;
+            res.push_back(sub);
+        }
+        else
+        {
+            std::string sub = str.substr(idx, nextidx - idx);
+            std::cout << "idx= " << idx << std::endl;
+            std::cout << sub << std::endl;
+            res.push_back(sub);
+        }
         idx = nextidx;
     }
     // std::stringstream buf(str);
