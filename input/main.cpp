@@ -18,7 +18,10 @@ int main()
     std::ios::sync_with_stdio(false);
 
     std::string str;
-    std::cin >> str;
+    // 改行文字が表れるまで1行全て文字列として入力したい場合は、
+    // std::getline 関数を用いる
+    std::getline(std::cin, str);
+    // std::cout << "str:\"" << str << "\"\n";
     std::vector<std::string> res;
     std::replace(str.begin(), str.end(), ',', ' ');
     // auto itr = str.begin();
@@ -27,23 +30,24 @@ int main()
     {
         while (str[idx] == ' ')
         {
+            // std::cout << "idx incremented.\n";
             ++idx;
             if (idx >= str.size())
                 break;
         }
-        size_t nextidx = str.find(" ", idx);
+        size_t nextidx = str.find(' ', idx);
         if (nextidx == str.npos)
         {
             std::string sub = str.substr(idx, str.size() - idx + 1);
-            std::cout << "last idx=" << idx << std::endl;
-            std::cout << sub << std::endl;
+            // std::cout << "last idx=" << idx << std::endl;
+            // std::cout << sub << std::endl;
             res.push_back(sub);
         }
         else
         {
             std::string sub = str.substr(idx, nextidx - idx);
-            std::cout << "idx= " << idx << std::endl;
-            std::cout << sub << std::endl;
+            // std::cout << "idx= " << idx << std::endl;
+            // std::cout << sub << std::endl;
             res.push_back(sub);
         }
         idx = nextidx;
@@ -55,7 +59,7 @@ int main()
     //     buf >> s;
     //     res.push_back(s);
     // }
-    std::cout << res.size() << std::endl;
+    // std::cout << res.size() << std::endl;
     for (auto& s : res)
     {
         std::cout << s << '\n';
