@@ -6,6 +6,34 @@
 #include <algorithm>
 #include <sstream>
 
+// 
+std::vector<std::string> ParseStrLine(std::string& str, std::string& delim)
+{
+    std::vector<std::string> res;
+    size_t idx = 0;
+    while (idx < str.size())
+    {
+        size_t nextidx = str.find_first_of(delim, idx);
+        if (idx == nextidx)
+        {
+            ++idx;
+            continue;
+        }
+
+        if (nextidx == str.npos)
+        {
+            res.emplace_back(str.substr(idx, str.size() - idx + 1));
+            return res;
+        }
+        else
+        {
+            res.emplace_back(str.substr(idx, nextidx - idx));
+            idx = nextidx;
+        }
+    }
+    return res;
+}
+
 int main()
 {
     // カンマ区切り毎に文字列を取得する
@@ -49,6 +77,14 @@ int main()
     }
 
     // 値を出力して確認する
+    for (auto& s : res)
+    {
+        std::cout << s << '\n';
+    }
+
+    std::cout << "function test\n";
+    std::string delim = ", \t";
+    auto resfromfunc = ParseStrLine(str, delim);
     for (auto& s : res)
     {
         std::cout << s << '\n';
