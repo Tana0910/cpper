@@ -1,6 +1,5 @@
 # コンパイルオプションを変数として定義する
-gcc_options = -std=c++17 -Wall --pedantic-error
-
+gcc_options = -std=c++17 -Wall --pedantic-error -DCMPEXCLUDE
 # ターゲット : 事前要件
 # 	レシピ
 # 注) レシピの直前には必ずタブスペースを書かなければならない
