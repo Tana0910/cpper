@@ -6,10 +6,23 @@
 #include <algorithm>
 #include <sstream>
 
-// 
+/**
+ * @fn ParseStrLine
+ * @brief 文字列を区切り文字毎に分割する
+ * @param [in] str 対象文字列
+ * @param [in] delim 区切り文字(delimiter)からなる文字列
+ * @return 分割した文字列の集合
+ * @bug 区切り文字で終わる場合、空白文字が格納されてしまう(例"1,2,"->{"1","2"," "})
+ */
 std::vector<std::string> ParseStrLine(std::string& str, std::string& delim)
 {
     std::vector<std::string> res;
+    // デリミタを指定していない場合は受け取った文字列をそのまま格納して返す
+    if (delim.empty())
+    {
+        res.push_back(str);
+        return res;
+    }
     size_t idx = 0;
     while (idx < str.size())
     {
