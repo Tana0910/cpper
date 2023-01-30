@@ -98,7 +98,7 @@ int main()
     std::cout << "function test\n";
     std::string delim = ", \t";
     auto resfromfunc = ParseStrLine(str, delim);
-    for (auto& s : res)
+    for (auto& s : resfromfunc)
     {
         std::cout << s << '\n';
     }
