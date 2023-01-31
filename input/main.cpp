@@ -12,7 +12,6 @@
  * @param [in] str 対象文字列
  * @param [in] delim 区切り文字(delimiter)からなる文字列
  * @return 分割した文字列の集合
- * @bug 区切り文字で終わる場合、空白文字が格納されてしまう(例"1,2,"->{"1","2"," "})
  */
 std::vector<std::string> ParseStrLine(std::string& str, std::string& delim)
 {
@@ -62,42 +61,10 @@ int main()
     // 改行文字が表れるまで1行全て文字列として入力したい場合は、
     // std::getline 関数を用いる
     std::getline(std::cin, str);
-
-    std::vector<std::string> res;
-    std::replace(str.begin(), str.end(), ',', ' ');
-
-    size_t idx = 0;
-    while (idx < str.size())
-    {
-        while (str[idx] == ' ')
-        {
-            ++idx;
-            if (idx >= str.size())
-                break;
-        }
-        size_t nextidx = str.find(' ', idx);
-        if (nextidx == str.npos)
-        {
-            std::string sub = str.substr(idx, str.size() - idx + 1);
-            res.push_back(sub);
-        }
-        else
-        {
-            std::string sub = str.substr(idx, nextidx - idx);
-            res.push_back(sub);
-        }
-        idx = nextidx;
-    }
-
-    // 値を出力して確認する
-    for (auto& s : res)
-    {
-        std::cout << s << '\n';
-    }
-
-    std::cout << "function test\n";
+    std::cout << "Input string:" << str << std::endl;
     std::string delim = ", \t";
     auto resfromfunc = ParseStrLine(str, delim);
+    std::cout << "The result is shown bellow" << std::endl;
     for (auto& s : resfromfunc)
     {
         std::cout << s << '\n';
