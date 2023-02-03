@@ -9,19 +9,58 @@ int main()
     // 洗濯ソートで vector の要素をソートする
     for (std::size_t head = 0; head != size; ++head)
     {
+        // printf debug 1 : 各ステップにおける vector の要素を表示
+        std::cout << "debug head = " << head << ", v = { ";
+        for (std::size_t i = 0; i != size; ++i)
+        {
+            std::cout << v.at(i) << " ";
+        }
+        std::cout << "}\n";
+        // printf debug 1
+
         auto min = head;
         for (std::size_t index = head + 1; index != size; ++index)
         {
+            // printf debug 2 : 未ソート領域の要素を表示
+            std::cout << v.at(index) << ", ";
+            // printf debug 2
+
             if (v.at(index) < v.at(min))
             {
+                // printf debug 3 : 大小比較のチェック
+                std::cout << v.at(index) << " < " << v.at(min) << "\n";
+                // printf debug 3
+
                 min = index;
             }
+            // printf debug 3
+            else
+            {
+                std::cout << v.at(index) << " >= " << v.at(min) << "\n";
+            }
+            // printf debug 3
         }
+        // printf debug 2
+        std::cout << "\n";
+        // printf debug 2
+
+        // printf debug 4 : 走査後の最小値のチェック
+        std::cout << "v.at(min) = " << v.at(min) << "\n";
+        // printf debug 4
+
+        // printf debug 5 : 要素の交換前後の値をチェック
+        std::cout << "debug befor: " << v.at(head) << ", " << v.at(min) << "\n";
+        // printf debug 5
+
         auto temp = v.at(head);
         v.at(head) = v.at(min);
         v.at(min) = v.at(head); // わざと間違えている
         // 正しくは下記の通り
         // v.at(min) = temp;
+
+        // printf debug 5
+        std::cout << "debug after: " << v.at(head) << ", " << v.at(min) << "\n";
+        // printf debug 5
     }
 
     // 出力
