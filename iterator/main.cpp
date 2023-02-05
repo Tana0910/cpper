@@ -6,8 +6,12 @@ int main()
     std::vector<int> v = { 1, 2, 3, 4, 5 };
     auto i = std::begin(v);
     int x = *i; // v[0](= 1)
-    std::cout << x << std::endl;
+    std::cout << x << std::endl; // 1
     *i = 0;
     std::cout << v.at(0) << std::endl; // 0
+    ++i;
+    std::cout << *i << std::endl; // 2
+    --i;
+    std::cout << *i << std::endl; // 0
     return 0;
 }
