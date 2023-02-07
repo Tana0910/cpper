@@ -38,5 +38,10 @@ int main()
     ++itr_x;
     std::cout << (itr_x == itr_y) <<std::endl;
 
+    // ループ
+    for (auto itr = std::begin(v); itr != std::end(v); ++itr)
+    {
+        std::cout << *itr << '\n';
+    }
     return 0;
 }
