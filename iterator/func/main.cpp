@@ -20,5 +20,27 @@ int main()
     std::istream_iterator<int> first(std::cin), last;
     output_all(first, last);
 
+    auto output_all_iter = [](auto first, auto last, auto output_iter)
+    {
+        for (auto iter = first; iter != last; ++iter, ++output_iter)
+        {
+            *output_iter = *iter;
+        }
+    };
+
+    output_all_iter(std::begin(v), std::end(v), std::ostream_iterator<int>(std::cout));
+
+    std::cout << "\n"s;
+
+    std::vector<int> destination(5);
+    output_all_iter(std::begin(v), std::end(v), std::begin(destination));
+
+    std::cout << "{ "s;
+    for (auto iter = std::begin(destination); iter != std::end(destination); ++iter)
+    {
+        std::cout << *iter << " "s;
+    }
+    std::cout << "}\n"s;
+
     return 0;
 }
