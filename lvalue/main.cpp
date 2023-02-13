@@ -59,5 +59,19 @@ int main()
     std::swap(z, w);
     std::cout << "(z, w) = ("s << z << ", "s << w << ")" << std::endl;
 
+    const int xc = 0;
+    // xc = 100; // 変更できないのでコンパイルエラー
+    std::cout << xc << std::endl;
+
+    int const yc = 0; // const int yc = 0; と同じ
+    std::cout << yc << std::endl;
+
+    int xvalue = 1000;
+    int& ref_xvalue = xvalue;
+    ++ref_xvalue;
+
+    const int& const_ref = xvalue;
+    // ++const_ref; // コンパイルエラー
+
     return 0;
 }
