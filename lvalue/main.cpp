@@ -69,9 +69,45 @@ int main()
     int xvalue = 1000;
     int& ref_xvalue = xvalue;
     ++ref_xvalue;
+    std::cout << "ref_xvalue = "s << ref_xvalue << std::endl;
 
     const int& const_ref = xvalue;
     // ++const_ref; // コンパイルエラー
+    std::cout << "const_ref = "s << const_ref << std::endl;
 
+    a = 0;
+    const int& b = a;
+    int const& c = a;
+    std::cout << b << ", "s << c << std::endl;
+
+    // int& const d = a; // コンパイルエラー
+
+    const int const_x = 90;
+    // int& ref_const_x_err = const_x; // コンパイルエラー
+    const int& ref_const_x_ok = const_x;
+    std::cout << "ref_const_x_ok ="s << ref_const_x_ok << std::endl;
+
+    auto vecfunc0 = [](std::vector<int> v)
+    {
+        std::cout << v.at(1234) << std::endl;
+    };
+
+    std::vector<int> vec(10000, -1);
+    vecfunc0(vec); // vecがコピーされてしまうので非効率
+
+    auto vecfunc1 = [](std::vector<int>& v)
+    {
+        std::cout << v.at(1234) << std::endl;
+    };
+    vecfunc1(vec); // vec のリファレンスを渡すので、コピーせずに済む。
+    // しかし、関数内で値を変更してしまうと、その変更が呼び出し元にも反映されてしまう。
+
+    // 引数の値を変更しないことを保証するためには、
+    // const な lvalue リファレンスを用いればよい
+    auto vecfunc2 = [](const std::vector<int>& v)
+    {
+        std::cout << v.at(1234) << std::endl;
+    };
+    vecfunc2(vec);
     return 0;
 }
