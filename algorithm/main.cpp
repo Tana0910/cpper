@@ -19,6 +19,11 @@ int main()
     std::vector<int> vec = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
     for_each(std::begin(vec), std::end(vec), [](auto value){ std::cout << value << " "s; });
     std::cout << std::endl;
-    
+
+    auto twice = [](auto& value){ value = 2 * value; };
+    for_each(std::begin(vec), std::end(vec), twice);
+    for_each(std::begin(vec), std::end(vec), [](auto value){ std::cout << value << " "s; });
+    std::cout << std::endl;
+
     return 0;
 }
