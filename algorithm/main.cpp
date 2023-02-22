@@ -90,5 +90,27 @@ int main()
     iseven_b = std::none_of(vec_b.begin(), vec_b.end(), [](auto value){ return value % 2 != 0; });
     std::cout << std::boolalpha << iseven_a << ", "s << iseven_b << std::endl;
 
+
+    auto find = [](auto first, auto last, const auto& value)
+    {
+        for (auto itr = first; itr != last; ++itr)
+        {
+            if (*itr == value)
+            {
+                return itr;
+            }
+        }
+        return last;
+    };
+
+    auto pos = find(vec_a.begin(), vec_a.end(), 8);
+    if (pos != vec_a.end())
+    {
+        std::cout << "Found."s << std::endl;
+    }
+    else
+    {
+        std::cout << "Found."s << std::endl;
+    }
     return 0;
 }
