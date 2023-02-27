@@ -110,7 +110,17 @@ int main()
     }
     else
     {
+        std::cout << "Not Found."s << std::endl;
+    }
+
+    pos = find(vec_a.begin(), vec_a.end(), 111);
+    if (pos != vec_a.end())
+    {
         std::cout << "Found."s << std::endl;
+    }
+    else
+    {
+        std::cout << "Not Found."s << std::endl;
     }
     return 0;
 }
