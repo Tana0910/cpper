@@ -122,5 +122,32 @@ int main()
     {
         std::cout << "Not Found."s << std::endl;
     }
+
+    auto find_if = [](auto first, auto last, auto pred)
+    {
+        for (auto itr = first; itr != last; ++itr)
+        {
+            if (pred(*itr)) return itr;
+        }
+        return last;
+    };
+
+    vec.clear();
+    vec = { 3, 77, 5, 2, 90, 91 };
+
+    auto is_even = [](auto value)
+    {
+        return value % 2 == 0;
+    };
+
+    auto is_odd = [](auto value)
+    {
+        return value % 2 == 1;
+    };
+
+    auto itr_even = find_if(vec.begin(), vec.end(), is_even);
+    auto itr_odd = find_if(vec.begin(), vec.end(), is_odd);
+    std::cout << *(itr_even) << " "s << *(itr_odd) << std::endl;
+
     return 0;
 }
