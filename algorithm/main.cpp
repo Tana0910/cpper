@@ -149,5 +149,21 @@ int main()
     auto itr_odd = find_if(vec.begin(), vec.end(), is_odd);
     std::cout << *(itr_even) << " "s << *(itr_odd) << std::endl;
 
+    int expected = 77;
+
+    auto iseq = [&](auto elem)
+    {
+        return expected == elem;
+    };
+
+    auto itr_expected = find_if(vec.begin(), vec.end(), iseq);
+    if (itr_expected != vec.end())
+    {
+        std::cout << "Found "s << *(itr_expected) << "."s << std::endl;
+    }
+    else
+    {
+        std::cout << "Not found."s << std::endl;
+    }
     return 0;
 }
