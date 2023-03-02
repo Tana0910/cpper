@@ -165,5 +165,24 @@ int main()
     {
         std::cout << "Not found."s << std::endl;
     }
+
+    auto count = [](auto first, auto last, auto value)
+    {
+        auto ret = 0u;
+        for (auto itr = first; itr != last; ++itr)
+        {
+            if (*itr == value)
+                ++ret;
+        }
+        return ret;
+    };
+
+    vec.clear();
+    vec = { 1, 10, 22, 1, 22, 22};
+    std::cout << count(vec.begin(), vec.end(), 1) << std::endl;
+    std::cout << count(vec.begin(), vec.end(), 10) << std::endl;
+    std::cout << count(vec.begin(), vec.end(), 22) << std::endl;
+    std::cout << count(vec.begin(), vec.end(), 5) << std::endl;
+
     return 0;
 }
