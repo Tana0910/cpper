@@ -11,6 +11,12 @@ I can use C++ a little.
 ## Directory
 
 cpper/<br>
-├── build/  ... make build samples  <br>
-├── hello/  ... hollo world samples <br>
-└── work/   ... playground<br>
+├── algorithm/  ... DIY STL algorithms <br>
+├── build/  ... make build samples <br>
+├── hello/  ... hollo world <br>
+├── hitchhike/  ... C++ guide <br>
+├── howtodebug/  ... debug samples <br>
+├── input/  ... making a parser for console inputs <br>
+├── iterator/  ... how to using iterator <br>
+├── lvalue/  ... lerning lvalue <br>
+└── work/   ... playground <br>
