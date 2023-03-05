@@ -184,5 +184,18 @@ int main()
     std::cout << count(vec.begin(), vec.end(), 22) << std::endl;
     std::cout << count(vec.begin(), vec.end(), 5) << std::endl;
 
+    auto count_if = [](auto first, auto last, auto pred)
+    {
+        auto ret = 0u;
+        for (auto itr = first; itr != last; ++itr)
+        {
+            if (pred(*itr)) ++ret;
+        }
+        return ret;
+    };
+
+    std::cout << count_if(vec.begin(), vec.end(), [](auto e){ return e % 2 == 1; }) << std::endl;
+    std::cout << count_if(vec.begin(), vec.end(), [](auto e){ return e % 2 == 0; }) << std::endl;
+
     return 0;
 }
