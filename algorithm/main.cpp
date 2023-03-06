@@ -197,5 +197,40 @@ int main()
     std::cout << count_if(vec.begin(), vec.end(), [](auto e){ return e % 2 == 1; }) << std::endl;
     std::cout << count_if(vec.begin(), vec.end(), [](auto e){ return e % 2 == 0; }) << std::endl;
 
+    auto distance = [](auto first, auto last)
+    {
+        return last - first;
+    };
+
+    auto d = distance(vec.begin(), vec.end());
+    auto d_from_next = distance(vec.begin() + 1, vec.end());
+
+    std::cout << d << std::endl;
+    std::cout << d_from_next << std::endl;
+
+    auto equal = [&](auto first1, auto last1, auto first2, auto last2)
+    {
+        if (distance(first1, last1) != distance(first2, last2))
+            return false;
+
+        for (auto i = first1, j = first2; i != last1; ++i, ++j)
+        {
+            if (*i != *j)
+                return false;
+        }
+        return true;
+    };
+
+    vec_a.clear();
+    vec_b.clear();
+
+    vec_a = { 1, 2, 3, 4, 5 };
+    vec_b = { 1, 2, 3, 4, 5 };
+
+    std::vector<int> vec_c = { 1, 2, 3, 5, 4 };
+
+    std::cout << equal(vec_a.begin(), vec_a.end(), vec_b.begin(), vec_b.end()) << std::endl;
+    std::cout << equal(vec_a.begin(), vec_a.end(), vec_c.begin(), vec_c.end()) << std::endl;
+
     return 0;
 }
