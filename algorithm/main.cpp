@@ -232,5 +232,26 @@ int main()
     std::cout << equal(vec_a.begin(), vec_a.end(), vec_b.begin(), vec_b.end()) << std::endl;
     std::cout << equal(vec_a.begin(), vec_a.end(), vec_c.begin(), vec_c.end()) << std::endl;
 
+    auto equal_comp = [&](auto first1, auto last1, auto first2, auto last2, auto comp)
+    {
+        if (distance(first1, last1) != distance(first2, last2))
+            return false;
+
+        for (auto i = first1, j = first2; i != last1; ++i, ++j)
+        {
+            if (!comp(*i, *j))
+                return false;
+        }
+        return true;
+    };
+
+    std::vector<double> vec_fpn_a = { 1.23, 6.54, 7.89 };
+    std::vector<double> vec_fpn_b = { 1.23, 6.54, 7.90 };
+    std::vector<double> vec_fpn_c = { 1.23, 6.54, 7.89 };
+
+    auto eq_fpn = [](double x, double y){ return std::abs(x - y) < 0.0001; };
+
+    std::cout << equal_comp(vec_fpn_a.begin(), vec_fpn_a.end(), vec_fpn_b.begin(), vec_fpn_b.end(), eq_fpn) << std::endl;
+    std::cout << equal_comp(vec_fpn_a.begin(), vec_fpn_a.end(), vec_fpn_c.begin(), vec_fpn_c.end(), eq_fpn) << std::endl;
     return 0;
 }
