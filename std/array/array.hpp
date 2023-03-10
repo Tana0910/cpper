@@ -1,5 +1,6 @@
 #include <iterator>
-namespace handmakestd
+
+namespace diystd
 {
     template <typename T, std::size_t N>
     struct array
