@@ -1,6 +1,8 @@
 #include "array.hpp"
 
 #include <iostream>
+#include <string>
+using namespace std::string_literals;
 
 int main()
 {
@@ -9,5 +11,6 @@ int main()
     array_type::value_type x = 0;
     array_type::reference ref = a[0];
     std::cout << x << ref << std::endl;
+    std::cout << "a.size() = "s << a.size() << std::endl;
     return 0;
 }

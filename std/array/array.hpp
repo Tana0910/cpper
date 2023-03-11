@@ -16,5 +16,10 @@ namespace diystd
         {
             return strage[i];
         }
+
+        size_type size()
+        {
+            return N;
+        }
     };
 }
