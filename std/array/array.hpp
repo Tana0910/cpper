@@ -6,7 +6,9 @@ namespace diystd
     struct array
     {
         using value_type = T;
+
         using reference = T&;
+        using const_reference = const T&;
 
         using size_type = std::size_t;
 
@@ -17,7 +19,12 @@ namespace diystd
             return strage[i];
         }
 
-        size_type size()
+        const_reference operator [] (size_type i) const
+        {
+            return strage[i];
+        }
+
+        size_type size() const
         {
             return N;
         }
