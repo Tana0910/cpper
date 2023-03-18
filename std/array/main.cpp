@@ -23,5 +23,11 @@ int main()
     std::cout << x << ref << std::endl;
     std::cout << "a.size() = "s << a.size() << std::endl;
     print(a);
+
+    int& ref_front = a.front();
+    int& ref_back = a.back();
+
+    std::cout << ref_front << " " << ref_back << std::endl;
+
     return 0;
 }

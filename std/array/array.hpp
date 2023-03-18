@@ -28,5 +28,25 @@ namespace diystd
         {
             return N;
         }
+
+        reference front()
+        {
+            return strage[0];
+        }
+
+        const_reference front() const
+        {
+            return strage[0];
+        }
+
+        reference back()
+        {
+            return strage[N-1];
+        }
+
+        const_reference back() const
+        {
+            return strage[N-1];
+        }
     };
 }
