@@ -48,5 +48,13 @@ namespace diystd
         {
             return strage[N-1];
         }
+
+        void fill(const_reference v)
+        {
+            for (size_type i = 0; i < N; ++i)
+            {
+                strage[i] = v;
+            }
+        }
     };
 }

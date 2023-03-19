@@ -29,5 +29,8 @@ int main()
 
     std::cout << ref_front << " " << ref_back << std::endl;
 
+    a.fill(0);
+    print(a);
+
     return 0;
 }
