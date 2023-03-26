@@ -32,5 +32,13 @@ int main()
     a.fill(0);
     print(a);
 
+    a = { 1, 2, 3, 4, 5 };
+    auto itr = a.begin();
+    std::cout << *itr << std::endl;
+    ++itr;
+    std::cout << *itr << std::endl;
+    auto itr_tail = a.end();
+    --itr_tail;
+    std::cout<< *itr_tail << std::endl;
     return 0;
 }

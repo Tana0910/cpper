@@ -2,15 +2,50 @@
 
 namespace diystd
 {
+    // イテレーターを表現するクラス
+    template <typename Array>
+    struct array_iterator
+    {
+        Array& a;
+        std::size_t idx;
+
+        array_iterator(Array& ar, std::size_t i) : a(ar), idx(i) {}
+
+        typename Array::reference operator * ()
+        {
+            return a[idx];
+        }
+
+        array_iterator& operator ++()
+        {
+            ++idx;
+            return *this;
+        }
+
+        array_iterator& operator --()
+        {
+            --idx;
+            return *this;
+        }
+    };
+
     template <typename T, std::size_t N>
     struct array
     {
+        // 要素の型
         using value_type = T;
 
+        // 要素の参照
         using reference = T&;
+
+        // 要素の参照(const)
         using const_reference = const T&;
 
+        // 要素数を表す型
         using size_type = std::size_t;
+
+        // イテレーター
+        using iterator = array_iterator<array>;
 
         value_type strage[N];
 
@@ -55,6 +90,17 @@ namespace diystd
             {
                 strage[i] = v;
             }
+        }
+
+        // イテレーターを返すメンバー関数
+        iterator begin()
+        {
+            return iterator(*this, 0);
+        }
+
+        iterator end()
+        {
+            return iterator(*this, N);
         }
     };
 }
