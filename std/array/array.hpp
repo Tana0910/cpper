@@ -22,10 +22,24 @@ namespace diystd
             return *this;
         }
 
+        array_iterator operator ++(int)
+        {
+            array_iterator copy = *this;
+            ++*this;
+            return copy;
+        }
+
         array_iterator& operator --()
         {
             --idx;
             return *this;
+        }
+
+        array_iterator operator --(int)
+        {
+            array_iterator copy = *this;
+            --*this;
+            return copy;
         }
     };
 
