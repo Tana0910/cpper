@@ -40,5 +40,12 @@ int main()
     auto itr_tail = a.end();
     --itr_tail;
     std::cout<< *itr_tail << std::endl;
+
+    std::cout << *(itr++) << std::endl;
+    std::cout << *itr << std::endl;
+
+    std::cout << *(itr_tail--) << std::endl;
+    std::cout << *itr_tail << std::endl;
+
     return 0;
 }
