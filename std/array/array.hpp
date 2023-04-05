@@ -41,6 +41,16 @@ namespace diystd
             --*this;
             return copy;
         }
+
+        bool operator == (const array_iterator& right) const
+        {
+            return (idx == right.idx);
+        }
+
+        bool operator != (const array_iterator& right) const
+        {
+            return (idx != right.idx);
+        }
     };
 
     template <typename T, std::size_t N>
@@ -116,5 +126,24 @@ namespace diystd
         {
             return iterator(*this, N);
         }
+
+        // bool operator == (const array& right) const
+        // {
+        //     if (N != right.size())
+        //         return false;
+            
+        //     for (size_type i = 0; i < N; ++i)
+        //     {
+        //         if (strage[i] != right.strage[i])
+        //             return false;
+        //     }
+
+        //     return true;
+        // }
+
+        // bool operator != (const array& right) const
+        // {
+        //     return !(*this == right);
+        // }
     };
 }

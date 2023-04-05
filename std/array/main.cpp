@@ -47,5 +47,15 @@ int main()
     std::cout << *(itr_tail--) << std::endl;
     std::cout << *itr_tail << std::endl;
 
+    auto itr_l = a.begin();
+    auto itr_r = a.begin();
+    bool iseq1 = (itr_l == itr_r);
+    bool iseq2 = (itr_l != itr_r);
+    std::cout << std::boolalpha << iseq1 << " " << iseq2 << std::endl;
+    ++itr_l;
+    iseq1 = (itr_l == itr_r);
+    iseq2 = (itr_l != itr_r);
+    std::cout << iseq1 << " " << iseq2 << std::endl;
+
     return 0;
 }
