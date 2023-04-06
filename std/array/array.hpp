@@ -51,6 +51,19 @@ namespace diystd
         {
             return (idx != right.idx);
         }
+
+        array_iterator& operator += (std::size_t n)
+        {
+            i += n;
+            return *this;
+        }
+
+        array_iterator operator + (std::size_t n)
+        {
+            auto copy = *this;
+            copy += n;
+            return copy;
+        }
     };
 
     template <typename T, std::size_t N>
