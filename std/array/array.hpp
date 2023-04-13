@@ -54,7 +54,7 @@ namespace diystd
 
         array_iterator& operator += (std::size_t n)
         {
-            i += n;
+            idx += n;
             return *this;
         }
 

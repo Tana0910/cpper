@@ -57,5 +57,11 @@ int main()
     iseq2 = (itr_l != itr_r);
     std::cout << iseq1 << " " << iseq2 << std::endl;
 
+    for (auto itr_loop = std::begin(a); itr_loop != std::end(a); ++itr_loop)
+    {
+        std::cout << *itr_loop << " ";
+    }
+    std::cout << "\n";
+
     return 0;
 }
