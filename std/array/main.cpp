@@ -63,5 +63,9 @@ int main()
     }
     std::cout << "\n";
 
+    auto itr_aplus = a.begin();
+    itr_aplus += 3;
+    std::cout << *itr_aplus << std::endl;
+    
     return 0;
 }

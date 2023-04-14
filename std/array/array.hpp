@@ -58,7 +58,7 @@ namespace diystd
             return *this;
         }
 
-        array_iterator operator + (std::size_t n)
+        array_iterator operator + (std::size_t n) const
         {
             auto copy = *this;
             copy += n;
