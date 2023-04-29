@@ -7,6 +7,8 @@ I can use C++ a little.
     - Linux Mint 20.2
   - Compiler
     - gcc >= 9.4.0
+  - docker image
+    - alpine:3.17
 
 ## Directory
 
@@ -20,3 +22,10 @@ cpper/<br>
 ├── iterator/  ... how to using iterator <br>
 ├── lvalue/  ... lerning lvalue <br>
 └── work/   ... playground <br>
+
+## Docker
+
+```
+docker build ./dockerfile/ -t {image}
+docker run -v $(pwd):/work --name {name} -it {image}
+```
