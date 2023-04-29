@@ -2,6 +2,7 @@
 !*/
 !*.*
 !Makefile
+![Dd]ockerfile
 *.gch
 
 .vscode
