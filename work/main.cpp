@@ -6,34 +6,67 @@
 
 // 試したいコードを気軽に書いていく
 
-// https://faithandbrave.hateblo.jp/entry/2014/05/01/171631 より
+// left curly blacket
+const char leftcb = '{'; 
 
-std::vector<std::string> split(const std::string& input, char delimiter)
+// right curly blacket
+const char rightcb = '}';
+
+const char dquat = '\"';
+
+const char colon = ':';
+
+const char comma = ',';
+
+struct jsonToken
 {
-    std::stringstream stream(input);
-    std::string field;
-    std::vector<std::string> res;
-    while (std::getline(stream, field, delimiter))
-    {
-        res.push_back(field);
-    }
-    return res;
-}
+    std::string objectType;
+};
 
+// JSON パーサー
 int main()
 {
-    const std::string input1 = "aaa,bbb,ccc";
-    std::cout << "Input 1 :" << input1 << std::endl;
-    for (auto& s : split(input1, ','))
+    std::string json = R"({
+  "Image": {
+    "Width": 800,
+    "Height": 600
+  }
+})";
+
+    // input debug
+    std::cout << json << std::endl;
+
+    // read json string
+    size_t curpos = 0;
+    size_t lastpos = 0;
+    while (curpos < json.size())
     {
-        std::cout << s << std::endl;
-    }
-    
-    const std::string input2 = "aaa, bbb, ccc";
-    std::cout << "Input 2 :" << input2 << std::endl;
-    for (auto& s : split(input2, ','))
-    {
-        std::cout << s << std::endl;
+        // debug current position
+        // std::cout << "curpos = " << curpos << std::endl;
+
+        switch (json[curpos])
+        {
+        case leftcb:
+            std::cout << leftcb << std::endl;
+            break;
+        case rightcb:
+            std::cout << rightcb << std::endl;
+            break;
+        case dquat:
+            std::cout << dquat << std::endl;
+            break;
+        case colon:
+            std::cout << colon << std::endl;
+            break;
+        case comma:
+            std::cout << comma << std::endl;
+            break;
+        default:
+            break;
+        }
+        // next pos
+        ++curpos;
     }
     return 0;
+
 }
