@@ -18,10 +18,30 @@ const char colon = ':';
 
 const char comma = ',';
 
-struct jsonToken
+enum class TokenType : int
 {
-    std::string objectType;
+    Illegal = -1, Leftcb = 0, Rightcb, Dquat, Colon, Commma, Key, Value
 };
+
+enum class JsonValueType : int
+{
+    Undefined = -1,
+    NullType = 0, 
+    Boolean, Object, Array, Number, String
+};
+
+bool ReadChar(const std::string& source, size_t& pos, char& ch)
+{
+    if (pos >= source.size())
+    {
+        return false;
+    }
+    ch = source[pos];
+    ++pos;
+    return true;
+}
+
+
 
 // JSON パーサー
 int main()
@@ -38,18 +58,20 @@ int main()
 
     // read json string
     size_t curpos = 0;
-    size_t lastpos = 0;
-    while (curpos < json.size())
+    size_t count_bracket = 0;
+    char ch;
+    while (ReadChar(json, curpos, ch))
     {
         // debug current position
         // std::cout << "curpos = " << curpos << std::endl;
-
-        switch (json[curpos])
+        switch (ch)
         {
         case leftcb:
+            ++count_bracket;
             std::cout << leftcb << std::endl;
             break;
         case rightcb:
+            --count_bracket;
             std::cout << rightcb << std::endl;
             break;
         case dquat:
@@ -64,8 +86,6 @@ int main()
         default:
             break;
         }
-        // next pos
-        ++curpos;
     }
     return 0;
 
